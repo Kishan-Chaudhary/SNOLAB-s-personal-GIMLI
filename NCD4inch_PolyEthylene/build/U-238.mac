@@ -1,6 +1,0 @@
-/gps/particle ion 
-/gps/ion 92 238 0 0
-/gps/energy 0. keV
-/gps/pos/type Volume
-/gps/pos/shape Sphere
-/gps/pos/radius 0.0119 m
