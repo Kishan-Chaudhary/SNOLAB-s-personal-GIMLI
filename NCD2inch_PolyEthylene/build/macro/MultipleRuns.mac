@@ -1,0 +1,606 @@
+# 2inch PE – Multiple Runs for 0.0000000001 to 11 MeV, /gps/position 70 -57.54 0 cm
+
+/control/verbose 2
+/run/initialize
+
+# -------------------------------
+
+# -------------------------------
+/analysis/setFileName NCD_0.0000000001MeV_Neutrons_2inchPE.root
+/analysis/openFile 
+/gps/particle neutron
+/gps/ene/mono 0.0000000001 MeV
+# Water boxes 70 -25 0, PolyEthylene 70 -55 0 cm 
+/gps/position 70 -57.54 0 cm 
+/gps/pos/type Point
+# 3. Emit in **random directions**
+/gps/ang/type iso        # isotropic emission
+/gps/ang/mintheta 0 deg
+/gps/ang/maxtheta 180 deg
+
+/gps/ang/minphi 0 deg
+/gps/ang/maxphi 360 deg
+
+/run/beamOn 3000000
+/analysis/closeFile
+
+# -------------------------------
+
+# -------------------------------
+/analysis/setFileName NCD_0.000000001MeV_Neutrons_2inchPE.root
+/analysis/openFile 
+/gps/particle neutron
+/gps/ene/mono 0.000000001 MeV
+# Water boxes 70 -25 0, PolyEthylene 70 -55 0 cm 
+/gps/position 70 -57.54 0 cm 
+/gps/pos/type Point
+# 3. Emit in **random directions**
+/gps/ang/type iso        # isotropic emission
+/gps/ang/mintheta 0 deg
+/gps/ang/maxtheta 180 deg
+
+/gps/ang/minphi 0 deg
+/gps/ang/maxphi 360 deg
+
+/run/beamOn 3000000
+/analysis/closeFile
+
+# -------------------------------
+
+# -------------------------------
+/analysis/setFileName NCD_0.00000001MeV_Neutrons_2inchPE.root
+/analysis/openFile 
+/gps/particle neutron
+/gps/ene/mono 0.00000001 MeV
+# Water boxes 70 -25 0, PolyEthylene 70 -55 0 cm 
+/gps/position 70 -57.54 0 cm 
+/gps/pos/type Point
+# 3. Emit in **random directions**
+/gps/ang/type iso        # isotropic emission
+/gps/ang/mintheta 0 deg
+/gps/ang/maxtheta 180 deg
+
+/gps/ang/minphi 0 deg
+/gps/ang/maxphi 360 deg
+
+/run/beamOn 3000000
+/analysis/closeFile
+
+
+# -------------------------------
+
+# -------------------------------
+/analysis/setFileName NCD_0.0000001MeV_Neutrons_2inchPE.root
+/analysis/openFile 
+/gps/particle neutron
+/gps/ene/mono 0.0000001 MeV
+# Water boxes 70 -25 0, PolyEthylene 70 -55 0 cm 
+/gps/position 70 -57.54 0 cm 
+/gps/pos/type Point
+# 3. Emit in **random directions**
+/gps/ang/type iso        # isotropic emission
+/gps/ang/mintheta 0 deg
+/gps/ang/maxtheta 180 deg
+
+/gps/ang/minphi 0 deg
+/gps/ang/maxphi 360 deg
+
+/run/beamOn 3000000
+/analysis/closeFile
+
+# -------------------------------
+
+# -------------------------------
+/analysis/setFileName NCD_0.000001MeV_Neutrons_2inchPE.root
+/analysis/openFile 
+/gps/particle neutron
+/gps/ene/mono 0.000001 MeV
+# Water boxes 70 -25 0, PolyEthylene 70 -55 0 cm 
+/gps/position 70 -57.54 0 cm 
+/gps/pos/type Point
+# 3. Emit in **random directions**
+/gps/ang/type iso        # isotropic emission
+/gps/ang/mintheta 0 deg
+/gps/ang/maxtheta 180 deg
+
+/gps/ang/minphi 0 deg
+/gps/ang/maxphi 360 deg
+
+/run/beamOn 3000000
+/analysis/closeFile
+
+# -------------------------------
+
+# -------------------------------
+/analysis/setFileName NCD_0.00001MeV_Neutrons_2inchPE.root
+/analysis/openFile 
+/gps/particle neutron
+/gps/ene/mono 0.00001 MeV
+# Water boxes 70 -25 0, PolyEthylene 70 -55 0 cm 
+/gps/position 70 -57.54 0 cm 
+/gps/pos/type Point
+# 3. Emit in **random directions**
+/gps/ang/type iso        # isotropic emission
+/gps/ang/mintheta 0 deg
+/gps/ang/maxtheta 180 deg
+
+/gps/ang/minphi 0 deg
+/gps/ang/maxphi 360 deg
+
+/run/beamOn 3000000
+/analysis/closeFile
+
+# -------------------------------
+
+# -------------------------------
+/analysis/setFileName NCD_0.0001MeV_Neutrons_2inchPE.root
+/analysis/openFile 
+/gps/particle neutron
+/gps/ene/mono 0.0001 MeV
+# Water boxes 70 -25 0, PolyEthylene 70 -55 0 cm 
+/gps/position 70 -57.54 0 cm 
+/gps/pos/type Point
+# 3. Emit in **random directions**
+/gps/ang/type iso        # isotropic emission
+/gps/ang/mintheta 0 deg
+/gps/ang/maxtheta 180 deg
+
+/gps/ang/minphi 0 deg
+/gps/ang/maxphi 360 deg
+
+/run/beamOn 3000000
+/analysis/closeFile
+
+
+# -------------------------------
+
+# -------------------------------
+/analysis/setFileName NCD_0.001MeV_Neutrons_2inchPE.root
+/analysis/openFile 
+/gps/particle neutron
+/gps/ene/mono 0.001 MeV
+# Water boxes 70 -25 0, PolyEthylene 70 -55 0 cm 
+/gps/position 70 -57.54 0 cm 
+/gps/pos/type Point
+# 3. Emit in **random directions**
+/gps/ang/type iso        # isotropic emission
+/gps/ang/mintheta 0 deg
+/gps/ang/maxtheta 180 deg
+
+/gps/ang/minphi 0 deg
+/gps/ang/maxphi 360 deg
+
+/run/beamOn 3000000
+/analysis/closeFile
+# -------------------------------
+
+# -------------------------------
+/analysis/setFileName NCD_0.01MeV_Neutrons_2inchPE.root
+/analysis/openFile 
+/gps/particle neutron
+/gps/ene/mono 0.01 MeV
+# Water boxes 70 -25 0, PolyEthylene 70 -55 0 cm 
+/gps/position 70 -57.54 0 cm 
+/gps/pos/type Point
+# 3. Emit in **random directions**
+/gps/ang/type iso        # isotropic emission
+/gps/ang/mintheta 0 deg
+/gps/ang/maxtheta 180 deg
+
+/gps/ang/minphi 0 deg
+/gps/ang/maxphi 360 deg
+
+/run/beamOn 3000000
+/analysis/closeFile
+# -------------------------------
+
+# -------------------------------
+/analysis/setFileName NCD_0.1MeV_Neutrons_2inchPE.root
+/analysis/openFile 
+/gps/particle neutron
+/gps/ene/mono 0.1 MeV
+# Water boxes 70 -25 0, PolyEthylene 70 -55 0 cm 
+/gps/position 70 -57.54 0 cm 
+/gps/pos/type Point
+# 3. Emit in **random directions**
+/gps/ang/type iso        # isotropic emission
+/gps/ang/mintheta 0 deg
+/gps/ang/maxtheta 180 deg
+
+/gps/ang/minphi 0 deg
+/gps/ang/maxphi 360 deg
+
+/run/beamOn 3000000
+/analysis/closeFile
+
+# -------------------------------
+
+# -------------------------------
+/analysis/setFileName NCD_0.2MeV_Neutrons_2inchPE.root
+/analysis/openFile 
+/gps/particle neutron
+/gps/ene/mono 0.2 MeV
+/gps/position 70 -57.54 0 cm
+/gps/pos/type Point
+# 3. Emit in **random directions**
+/gps/ang/type iso        # isotropic emission
+/gps/ang/mintheta 0 deg
+/gps/ang/maxtheta 180 deg
+
+/gps/ang/minphi 0 deg
+/gps/ang/maxphi 360 deg
+
+/run/beamOn 3000000
+/analysis/closeFile
+
+
+# -------------------------------
+
+# -------------------------------
+/analysis/setFileName NCD_0.3MeV_Neutrons_2inchPE.root
+/analysis/openFile 
+/gps/particle neutron
+/gps/ene/mono 0.3 MeV
+/gps/position 70 -57.54 0 cm 
+/gps/pos/type Point
+# 3. Emit in **random directions**
+/gps/ang/type iso        # isotropic emission
+/gps/ang/mintheta 0 deg
+/gps/ang/maxtheta 180 deg
+
+/gps/ang/minphi 0 deg
+/gps/ang/maxphi 360 deg
+
+/run/beamOn 3000000
+/analysis/closeFile
+
+# -------------------------------
+
+# -------------------------------
+/analysis/setFileName NCD_0.4MeV_Neutrons_2inchPE.root
+/analysis/openFile 
+/gps/particle neutron
+/gps/ene/mono 0.4 MeV
+/gps/position 70 -57.54 0 cm 
+/gps/pos/type Point
+# 3. Emit in **random directions**
+/gps/ang/type iso        # isotropic emission
+/gps/ang/mintheta 0 deg
+/gps/ang/maxtheta 180 deg
+
+/gps/ang/minphi 0 deg
+/gps/ang/maxphi 360 deg
+
+/run/beamOn 3000000
+/analysis/closeFile
+
+# -------------------------------
+
+# -------------------------------
+/analysis/setFileName NCD_0.5MeV_Neutrons_2inchPE.root
+/analysis/openFile 
+/gps/particle neutron
+/gps/ene/mono 0.5 MeV
+/gps/position 70 -57.54 0 cm 
+/gps/pos/type Point
+# 3. Emit in **random directions**
+/gps/ang/type iso        # isotropic emission
+/gps/ang/mintheta 0 deg
+/gps/ang/maxtheta 180 deg
+
+/gps/ang/minphi 0 deg
+/gps/ang/maxphi 360 deg
+
+/run/beamOn 3000000
+/analysis/closeFile
+
+# -------------------------------
+
+# -------------------------------
+/analysis/setFileName NCD_0.6MeV_Neutrons_2inchPE.root
+/analysis/openFile 
+/gps/particle neutron
+/gps/ene/mono 0.6 MeV
+/gps/position 70 -57.54 0 cm 
+/gps/pos/type Point
+# 3. Emit in **random directions**
+/gps/ang/type iso        # isotropic emission
+/gps/ang/mintheta 0 deg
+/gps/ang/maxtheta 180 deg
+
+/gps/ang/minphi 0 deg
+/gps/ang/maxphi 360 deg
+
+/run/beamOn 3000000
+/analysis/closeFile
+
+# -------------------------------
+
+# -------------------------------
+/analysis/setFileName NCD_0.7MeV_Neutrons_2inchPE.root
+/analysis/openFile 
+/gps/particle neutron
+/gps/ene/mono 0.7 MeV
+/gps/position 70 -57.54 0 cm 
+/gps/pos/type Point
+# 3. Emit in **random directions**
+/gps/ang/type iso        # isotropic emission
+/gps/ang/mintheta 0 deg
+/gps/ang/maxtheta 180 deg
+
+/gps/ang/minphi 0 deg
+/gps/ang/maxphi 360 deg
+
+/run/beamOn 3000000
+/analysis/closeFile
+
+
+# -------------------------------
+
+# -------------------------------
+/analysis/setFileName NCD_0.8MeV_Neutrons_2inchPE.root
+/analysis/openFile 
+/gps/particle neutron
+/gps/ene/mono 0.8 MeV
+/gps/position 70 -57.54 0 cm 
+/gps/pos/type Point
+# 3. Emit in **random directions**
+/gps/ang/type iso        # isotropic emission
+/gps/ang/mintheta 0 deg
+/gps/ang/maxtheta 180 deg
+
+/gps/ang/minphi 0 deg
+/gps/ang/maxphi 360 deg
+
+/run/beamOn 3000000
+/analysis/closeFile
+
+
+# -------------------------------
+
+# -------------------------------
+/analysis/setFileName NCD_0.9MeV_Neutrons_2inchPE.root
+/analysis/openFile 
+/gps/particle neutron
+/gps/ene/mono 0.9 MeV
+/gps/position 70 -57.54 0 cm 
+/gps/pos/type Point
+# 3. Emit in **random directions**
+/gps/ang/type iso        # isotropic emission
+/gps/ang/mintheta 0 deg
+/gps/ang/maxtheta 180 deg
+
+/gps/ang/minphi 0 deg
+/gps/ang/maxphi 360 deg
+
+/run/beamOn 3000000
+/analysis/closeFile
+
+
+# -------------------------------
+
+# -------------------------------
+/analysis/setFileName NCD_1MeV_Neutrons_2inchPE.root
+/analysis/openFile 
+/gps/particle neutron
+/gps/ene/mono 1 MeV
+/gps/position 70 -57.54 0 cm 
+/gps/pos/type Point
+# 3. Emit in **random directions**
+/gps/ang/type iso        # isotropic emission
+/gps/ang/mintheta 0 deg
+/gps/ang/maxtheta 180 deg
+
+/gps/ang/minphi 0 deg
+/gps/ang/maxphi 360 deg
+
+/run/beamOn 3000000
+/analysis/closeFile
+
+
+# -------------------------------
+
+# -------------------------------
+/analysis/setFileName NCD_2MeV_Neutrons_2inchPE.root
+/analysis/openFile 
+/gps/particle neutron
+/gps/ene/mono 2 MeV
+/gps/position 70 -57.54 0 cm 
+/gps/pos/type Point
+# 3. Emit in **random directions**
+/gps/ang/type iso        # isotropic emission
+/gps/ang/mintheta 0 deg
+/gps/ang/maxtheta 180 deg
+
+/gps/ang/minphi 0 deg
+/gps/ang/maxphi 360 deg
+
+/run/beamOn 3000000
+/analysis/closeFile
+
+
+# -------------------------------
+
+# -------------------------------
+/analysis/setFileName NCD_3MeV_Neutrons_2inchPE.root
+/analysis/openFile 
+/gps/particle neutron
+/gps/ene/mono 3 MeV
+/gps/position 70 -57.54 0 cm 
+/gps/pos/type Point
+# 3. Emit in **random directions**
+/gps/ang/type iso        # isotropic emission
+/gps/ang/mintheta 0 deg
+/gps/ang/maxtheta 180 deg
+
+/gps/ang/minphi 0 deg
+/gps/ang/maxphi 360 deg
+
+/run/beamOn 3000000
+/analysis/closeFile
+
+
+# -------------------------------
+
+# -------------------------------
+/analysis/setFileName NCD_4MeV_Neutrons_2inchPE.root
+/analysis/openFile 
+/gps/particle neutron
+/gps/ene/mono 4 MeV
+/gps/position 70 -57.54 0 cm 
+/gps/pos/type Point
+# 3. Emit in **random directions**
+/gps/ang/type iso        # isotropic emission
+/gps/ang/mintheta 0 deg
+/gps/ang/maxtheta 180 deg
+
+/gps/ang/minphi 0 deg
+/gps/ang/maxphi 360 deg
+
+/run/beamOn 3000000
+/analysis/closeFile
+
+
+# -------------------------------
+
+# -------------------------------
+/analysis/setFileName NCD_5MeV_Neutrons_2inchPE.root
+/analysis/openFile 
+/gps/particle neutron
+/gps/ene/mono 5 MeV
+/gps/position 70 -57.54 0 cm 
+/gps/pos/type Point
+# 3. Emit in **random directions**
+/gps/ang/type iso        # isotropic emission
+/gps/ang/mintheta 0 deg
+/gps/ang/maxtheta 180 deg
+
+/gps/ang/minphi 0 deg
+/gps/ang/maxphi 360 deg
+
+/run/beamOn 3000000
+/analysis/closeFile
+
+
+# -------------------------------
+
+# -------------------------------
+/analysis/setFileName NCD_6MeV_Neutrons_2inchPE.root
+/analysis/openFile 
+/gps/particle neutron
+/gps/ene/mono 6 MeV
+/gps/position 70 -57.54 0 cm 
+/gps/pos/type Point
+# 3. Emit in **random directions**
+/gps/ang/type iso        # isotropic emission
+/gps/ang/mintheta 0 deg
+/gps/ang/maxtheta 180 deg
+
+/gps/ang/minphi 0 deg
+/gps/ang/maxphi 360 deg
+
+/run/beamOn 3000000
+/analysis/closeFile
+
+
+# -------------------------------
+
+# -------------------------------
+/analysis/setFileName NCD_7MeV_Neutrons_2inchPE.root
+/analysis/openFile 
+/gps/particle neutron
+/gps/ene/mono 7 MeV
+/gps/position 70 -57.54 0 cm 
+/gps/pos/type Point
+# 3. Emit in **random directions**
+/gps/ang/type iso        # isotropic emission
+/gps/ang/mintheta 0 deg
+/gps/ang/maxtheta 180 deg
+
+/gps/ang/minphi 0 deg
+/gps/ang/maxphi 360 deg
+
+/run/beamOn 3000000
+/analysis/closeFile
+
+
+# -------------------------------
+
+# -------------------------------
+/analysis/setFileName NCD_8MeV_Neutrons_2inchPE.root
+/analysis/openFile 
+/gps/particle neutron
+/gps/ene/mono 8 MeV
+/gps/position 70 -57.54 0 cm 
+/gps/pos/type Point
+# 3. Emit in **random directions**
+/gps/ang/type iso        # isotropic emission
+/gps/ang/mintheta 0 deg
+/gps/ang/maxtheta 180 deg
+
+/gps/ang/minphi 0 deg
+/gps/ang/maxphi 360 deg
+
+/run/beamOn 3000000
+/analysis/closeFile
+
+
+# -------------------------------
+
+# -------------------------------
+/analysis/setFileName NCD_9MeV_Neutrons_2inchPE.root
+/analysis/openFile 
+/gps/particle neutron
+/gps/ene/mono 9 MeV
+/gps/position 70 -57.54 0 cm 
+/gps/pos/type Point
+# 3. Emit in **random directions**
+/gps/ang/type iso        # isotropic emission
+/gps/ang/mintheta 0 deg
+/gps/ang/maxtheta 180 deg
+
+/gps/ang/minphi 0 deg
+/gps/ang/maxphi 360 deg
+
+/run/beamOn 3000000
+/analysis/closeFile
+
+
+# -------------------------------
+
+# -------------------------------
+/analysis/setFileName NCD_10MeV_Neutrons_2inchPE.root
+/analysis/openFile 
+/gps/particle neutron
+/gps/ene/mono 10 MeV
+/gps/position 70 -57.54 0 cm 
+/gps/pos/type Point
+# 3. Emit in **random directions**
+/gps/ang/type iso        # isotropic emission
+/gps/ang/mintheta 0 deg
+/gps/ang/maxtheta 180 deg
+
+/gps/ang/minphi 0 deg
+/gps/ang/maxphi 360 deg
+
+/run/beamOn 3000000
+/analysis/closeFile
+# -------------------------------
+
+# -------------------------------
+/analysis/setFileName NCD_11MeV_Neutrons_2inchPE.root
+/analysis/openFile 
+/gps/particle neutron
+/gps/ene/mono 11 MeV
+/gps/position 70 -57.54 0 cm 
+/gps/pos/type Point
+# 3. Emit in **random directions**
+/gps/ang/type iso        # isotropic emission
+/gps/ang/mintheta 0 deg
+/gps/ang/maxtheta 180 deg
+
+/gps/ang/minphi 0 deg
+/gps/ang/maxphi 360 deg
+
+/run/beamOn 3000000
+/analysis/closeFile
