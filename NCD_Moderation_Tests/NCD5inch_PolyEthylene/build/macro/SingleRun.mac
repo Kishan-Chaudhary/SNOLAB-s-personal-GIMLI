@@ -1,0 +1,17 @@
+/analysis/setFileName NCD_0.2MeV_Neutrons_5inchPE.root
+/analysis/openFile 
+/gps/particle neutron
+/gps/ene/mono 0.2 MeV
+/gps/position 70 -49.92 0
+/gps/pos/type Point
+# 3. Emit in **random directions**
+/gps/ang/type iso        # isotropic emission
+/gps/ang/mintheta 0 deg
+/gps/ang/maxtheta 180 deg
+
+/gps/ang/minphi 0 deg
+/gps/ang/maxphi 360 deg
+
+/run/beamOn 8000000
+/analysis/closeFile
+
