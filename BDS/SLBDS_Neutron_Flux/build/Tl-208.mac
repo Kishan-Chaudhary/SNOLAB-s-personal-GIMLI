@@ -1,0 +1,23 @@
+/control/verbose 2
+/run/initialize
+
+/gps/particle gamma
+
+/gps/ene/mono 2.615 MeV
+
+/gps/pos/type Volume
+/gps/pos/shape Sphere
+/gps/pos/radius 0.5 cm     # small source
+#the relevant axis is Y in X Y Z cm, 20 uCu source at 0 -1 17.2 cm and 25 uCu source at 0 6 17.3 cm
+/gps/pos/centre 0 -1 17.2 cm
+
+# 3. Emit in **random directions**
+/gps/ang/type iso        # isotropic emission
+/gps/ang/mintheta 0 deg
+/gps/ang/maxtheta 180 deg
+
+/gps/ang/minphi 0 deg
+/gps/ang/maxphi 360 deg
+
+
+/run/beamOn 20000000

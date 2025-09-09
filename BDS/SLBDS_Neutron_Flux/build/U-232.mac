@@ -1,0 +1,6 @@
+/gps/particle ion 
+/gps/ion 92 232 0 0
+/gps/energy 0. keV
+/gps/position 0 0 17.2 cm 
+/gps/pos/type Point
+/run/beamOn 2000000

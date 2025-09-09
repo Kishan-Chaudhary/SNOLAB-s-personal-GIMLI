@@ -1,0 +1,206 @@
+ #include "DetectorConstruction.hh"
+
+DetectorConstruction::DetectorConstruction()
+{}
+
+DetectorConstruction::~DetectorConstruction()
+{}
+
+G4VPhysicalVolume *DetectorConstruction::Construct()
+{
+  G4int ncomponents, natoms;
+  
+  G4Element* N  = new G4Element("Nitrogen" ,"N" , 7., 14.01*g/mole);
+  G4Element* O  = new G4Element("Oxygen"   ,"O" , 8., 16.00*g/mole);
+  G4Element* H  = new G4Element("Hydrogen" ,"H" , 1., 1.01*g/mole);
+  G4Element* C  = new G4Element("Carbon"   ,"C" , 6, 12.01*g/mole);
+  G4Element* Al = new G4Element("Aluminum", "Al", 13, 26.98*g/mole);
+  
+  G4Material* H2O = 
+  new G4Material("H2O", 3.05*g/cm3, ncomponents=2);
+  H2O->AddElement( H, natoms=2);
+  H2O->AddElement( O, natoms=1); 
+ 
+  G4Material* Air = //Note that the density is increased by ~1.3x for Underground Air
+  new G4Material("Air", 1.7903*mg/cm3, ncomponents=2);
+  Air->AddElement(N, 70.*perCent);
+  Air->AddElement(O, 30.*perCent);
+  worldMaterial = Air;
+
+  G4Material* Polyethylene =
+  new G4Material("Polyethylene", .94*g/cm3, 2);
+  Polyethylene->AddElement(C, natoms=2);
+  Polyethylene->AddElement(H, natoms=4);
+
+  G4Material* ChamberAluminum = 
+  new G4Material("ChamberAluminum", 2*g/cm3, 1);//CHANGE DENSITY
+  ChamberAluminum->AddElement(Al, natoms=1);
+
+  G4Material* acrylicLid =
+  new G4Material("Acrylic", 2*g/cm3, 3);//Change Density once measurements are taken
+  acrylicLid->AddElement(C, natoms=5);
+  acrylicLid->AddElement(H, natoms=8);
+  acrylicLid->AddElement(O, natoms=2);
+  
+  //Building world first
+    G4Sphere *solidWorld = 
+      new G4Sphere("solidWorld",0.,150*cm,0*deg,360*deg,0*deg,180*deg);
+    G4LogicalVolume *logicWorld = 
+      new G4LogicalVolume(solidWorld, worldMaterial, "World");
+    G4VPhysicalVolume *physWorld = 
+      new G4PVPlacement(0, G4ThreeVector(0.,0.,0.), logicWorld, "physWorld", 0, false, 0, true);
+  G4cout << "BDS World Geometry Initialized";
+
+  //Dimensions for geometry building
+  
+  //Measurements for Detectors
+  G4double InnerRadius = 6.38*mm;
+  G4double InnerLength = 50.8*mm;
+  G4double OuterThickness = 1.52*mm;
+  G4double OuterRadius = InnerRadius + OuterThickness;
+  G4double OuterLength = InnerLength + 2*OuterThickness;
+  
+  //Measurements for Chamber
+  G4double cInnerRadius = 16.19*cm; 
+  G4double cOuterRadius = 16.44*cm;
+  G4double cHeight = 29.21*cm;
+  G4double lidHeight = 2.43*cm;
+  G4double lidWidth = cOuterRadius+1*cm; //Need to take this measurement
+
+  //Rotations and Positions
+  G4RotationMatrix* NoRot = new G4RotationMatrix(0*deg, 0*deg, 0*deg); 
+  G4ThreeVector NoTrans(0,0,0);
+  G4ThreeVector InnerTrans(0,0,-InnerLength/2);
+  G4ThreeVector OuterTrans(0,0,-OuterLength/2);
+  G4ThreeVector ChamberToBase(0,0,-cHeight/2);
+  G4ThreeVector ChamberToTop(0,0,cHeight/2+lidHeight/2+0.1*mm);//we dont want overlap for lid and chamber since we wont g4union them
+
+  // Inside of BDS
+  G4Tubs* 
+  sInnerTub = new G4Tubs("Inner Cylinder",                                //name
+               0., InnerRadius, 0.5*InnerLength, 0., twopi);    //dimensions
+  G4Sphere*
+  sInnerSphere = new G4Sphere("Inner Sphere", 0.,InnerRadius, 0*deg,
+			      360*deg,0*deg,180*deg);
+  G4VSolid*
+  sInnerBDS = new G4UnionSolid("InnerBDS Solid",sInnerTub, sInnerSphere, NoRot, InnerTrans);
+
+  //G4LogicalVolume*
+  logicInner = new G4LogicalVolume(sInnerBDS,                //shape
+                       H2O,                 //material
+                       "Inner BDS Logic");     //name
+
+  for(G4int i=0; i<2;i++) //Placing 144 Detector inners, we place them seperate from the outer since they are sensitive detectors
+    {
+      for(G4int j=0; j<6; j++)
+      {
+	for (G4int k=0; k<12; k++)
+	{
+	  new G4PVPlacement(0,                        //no rotation
+		       G4ThreeVector(-5.72*cm+(2.29*j)*cm,-11.57*cm+(2.29*k)*cm,-InnerLength/2-7.5*cm+(InnerLength/2+6*cm)*i),//Centered at (0,0,0)
+                       logicInner,                        //logical volume
+                       "Inner BDS Logic",      //name
+                       logicWorld,                      //mother  volume
+                       false,                          //no boolean operation
+		       i+j*100+k*1000,                 //copy number, returns a unique number every iteration
+		       true);
+      
+	}
+      }
+    }
+
+  // Outside of BDS
+  G4Tubs* 
+  sOuterTub = new G4Tubs("Outer Cylinder",                            //name
+             0., OuterRadius, 0.5*OuterLength, 0., twopi);  //dimensions
+  G4Sphere*
+  sOuterSphere = new G4Sphere("Outer Sphere", 0.,OuterRadius, 0*deg,
+				  360*deg,0*deg,180*deg);
+  G4VSolid*
+  NoCavBDS = new G4UnionSolid("No Cavity BDS", sOuterTub, sOuterSphere, NoRot, OuterTrans);
+  
+  G4VSolid*
+  sOuterBDS = new G4SubtractionSolid("OuterBDS", NoCavBDS, sInnerBDS, NoRot, NoTrans);
+
+  G4LogicalVolume*
+  logicOuter = new G4LogicalVolume(sOuterBDS,            //shape
+                       Polyethylene,               //material
+                       "OuterBDSLogic");   //name
+
+  for(G4int i=0; i<2;i++) //Placing 144 Detector outers
+    {
+      for(G4int j=0; j<6; j++)
+      {
+	for (G4int k=0; k<12; k++)
+	{
+	  new G4PVPlacement(0,                        //no rotation
+		       G4ThreeVector(-5.72*cm+(2.29*j)*cm,-11.57*cm+(2.29*k)*cm,-InnerLength/2-7.5*cm+(InnerLength/2+6*cm)*i),//Centered at (0,0,0)
+                       logicOuter,                        //logical volume
+                       "Outer BDS Logic",      //name
+                       logicWorld,                      //mother  volume
+                       false,                          //no boolean operation
+		       i+j*100+k*1000,                 //copy number, returns a unique number every iteration
+		       true);
+      
+	}
+      }
+    }           
+  G4cout << "BDS Inner and Outer Layers Constructed";
+
+  //Chamber Construction  
+  G4Tubs*
+  solidChamberWalls = new G4Tubs("Solid Chamber Walls", //name
+		cInnerRadius, cOuterRadius, cHeight/2, 0., twopi); //dimensions  
+  G4Tubs*
+  solidChamberBase = new G4Tubs("Solid Chamber Base",
+                0., cOuterRadius, cOuterRadius-cInnerRadius, 0., twopi);
+  G4VSolid*
+  solidChamber = new G4UnionSolid("Solid Chamber", //walls + base = aluminum part of chamber 
+  	solidChamberWalls, solidChamberBase, NoRot, ChamberToBase);
+ 
+  G4LogicalVolume*
+  logicChamber = new G4LogicalVolume(solidChamber,            //shape
+                       ChamberAluminum,               //material
+                       "Logic Chamber");   //name
+		 
+		 new G4PVPlacement(0,                        //Placing Chamber around detectors
+                       NoTrans,                //at (0,0,0)
+                       logicChamber,                        //logical volume
+                       "Logic Chamber",      //name
+                       logicWorld,                      //mother  volume
+                       false,                          //no boolean operation
+                       0,                 //no copies
+                       true);
+
+  //Chamber Lid Construction
+  G4Tubs*
+  solidChamberLid = new G4Tubs("Solid Chamber Lid", //name
+	      0., lidWidth, lidHeight/2, 0., twopi); //dimensions 
+ 
+  G4LogicalVolume*
+  logicChamberLid = new G4LogicalVolume(solidChamberLid,            //shape
+                       acrylicLid,               //material
+                       "Logic Chamber Lid");   //name
+		 
+		 new G4PVPlacement(0,                        //Placing Chamber around detectors
+		       ChamberToTop,                //Placing lid on chamber
+                       logicChamberLid,                        //logical volume
+                       "Logic Chamber Lid",      //name
+                       logicWorld,                      //mother  volume
+                       false,                          //no boolean operation
+                       0,                 //no copies
+                       true);
+
+
+  G4cout << "BDS Chamber System Constructed";
+
+//Setting sensitive detectors as the logical volumes of the inner BDS
+  SensitiveDetector *sensDet = 
+  new SensitiveDetector("SensitiveDetector");
+  logicInner->SetSensitiveDetector(sensDet);
+  G4cout << "Sensitive Detector Set";
+
+  return physWorld; 
+}
+
+//Here we define our sensitive hit box for neutrons within the BDS

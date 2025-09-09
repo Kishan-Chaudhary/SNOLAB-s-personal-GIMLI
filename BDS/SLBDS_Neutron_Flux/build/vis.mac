@@ -1,0 +1,15 @@
+
+UI->ApplyCommand("/vis/open DAWNFILE");
+UI->ApplyCommand("/vis/scene/add/trajectories");  // Add trajectories to visualization
+UI->ApplyCommand("/vis/scene/endOfEventAction accumulate");  // Accumulate scenes at end of each event
+UI->ApplyCommand("/vis/verbose errors 2");                   // Enable verbose output for errors
+UI->ApplyCommand("/vis/verbose warnings 2");                 // Enable verbose output for warnings
+
+UI->ApplyCommand("/vis/viewer/set/viewpointThetaPhi 60. 30.");
+
+UI->ApplyCommand("/vis/drawVolume");
+
+UI->ApplyCommand("/vis/viewer/set/autoRefresh true");
+
+UI->ApplyCommand("/vis/scene/add/trajectories smooth");
+UI->ApplyCommand("/process/had/deex/correlatedGamma true");
