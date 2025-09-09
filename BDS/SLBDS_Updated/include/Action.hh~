@@ -1,0 +1,16 @@
+#ifndef Action_h
+#define Action_h
+
+#include "G4VUserActionInitialization.hh"
+#include "Generator.hh"
+
+class ActionInitialization : public G4VUserActionInitialization
+{
+public:
+  ActionInitialization();
+  ~ActionInitialization();
+
+  virtual void Build() const;
+};
+
+#endif

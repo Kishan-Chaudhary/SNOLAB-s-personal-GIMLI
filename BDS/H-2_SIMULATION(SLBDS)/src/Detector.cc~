@@ -1,0 +1,29 @@
+#include "Detector.hh"
+
+SensitiveDetector::SensitiveDetector(G4String name) : G4VSensitiveDetector(name)
+{}
+
+SensitiveDetector::~SensitiveDetector()
+{}
+
+G4bool SensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *ROhist)
+{
+  G4Track *track = aStep->GetTrack();
+  
+  //G4int evt = G4RunManager::GetRunManager()->GetCurrentEvent()->GetEventID();
+  //Above is only useful if we're running seperate events
+
+  G4double ekin1 = track->GetKineticEnergy();//Default units of MeV
+  G4double CutOff = 100*keV;
+
+  if (ekin1 > CutOff) {
+   G4AnalysisManager *man = G4AnalysisManager::Instance();
+   man->FillNtupleDColumn(0, ekin1);
+   man->AddNtupleRow();
+  } else{
+   G4AnalysisManager *man = G4AnalysisManager::Instance();
+   man->FillNtupleDColumn(1, ekin1);
+   man->AddNtupleRow();
+  }
+  return true;
+}

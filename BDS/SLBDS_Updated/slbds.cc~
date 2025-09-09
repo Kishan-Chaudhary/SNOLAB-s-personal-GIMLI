@@ -1,0 +1,67 @@
+#include <iostream>
+
+#include "G4RunManager.hh"
+#include "G4VisExecutive.hh"
+#include "G4VisManager.hh"
+#include "G4UIExecutive.hh"
+#include "G4UImanager.hh"
+
+#include "DetectorConstruction.hh"
+
+#include "PhysicsList.hh"
+#include "HadronElasticPhysicsHP.hh"
+#include "GammaNuclearPhysics.hh"
+#include "ElectromagneticPhysics.hh"
+
+#include "Action.hh"
+
+int main(int argc,char** argv) {
+ 
+  //choose the Random engine
+  G4Random::setTheEngine(new CLHEP::RanecuEngine);
+ 
+  // Construct the default run manager
+  G4RunManager* runManager = new G4RunManager();     
+  runManager->SetUserInitialization(new DetectorConstruction());
+  runManager->SetUserInitialization(new PhysicsList());
+  runManager->SetUserInitialization(new ActionInitialization());
+  runManager->Initialize();
+
+  //Visualization initialize
+  G4VisManager* visManager = new G4VisExecutive;
+  visManager->Initialize();    
+
+  // get the pointer to the User Interface manager 
+  G4UImanager* UI = G4UImanager::GetUIpointer();
+  //UI->SetCoutDestination(this);
+  //UI initialize and termination
+  G4UIExecutive * ui = new G4UIExecutive(argc,argv);      
+  
+  //The following runs automatically on program start
+  //Starts Dawnfile
+  UI->ApplyCommand("/vis/open DAWNFILE");
+  //Sets View to a nice angle
+  UI->ApplyCommand("/vis/viewer/set/viewpointThetaPhi 60. 30.");
+  //Draws Geometry
+  UI->ApplyCommand("/vis/drawVolume");
+  //Refreshes for new events
+  UI->ApplyCommand("/vis/viewer/set/autoRefresh true");
+  //Draws particle trajectories
+  UI->ApplyCommand("/vis/scene/add/trajectories smooth");
+  //Sets neutrons to be drawn as blue
+  UI->ApplyCommand("/vis/modeling/trajectories/drawByParticleID-0/set neutron blue");
+  //Sets the max amount of events that are visualized
+  UI->ApplyCommand("/vis/scene/endOfEventAction accumulate 100");
+
+  ui->SessionStart();
+  delete ui;
+  
+  //Visualization termination
+  delete visManager;
+
+  //Job termination 
+  //
+  delete runManager;
+
+  return 0;
+}

@@ -1,0 +1,18 @@
+/control/verbose 2
+/run/initialize
+#
+/gps/particle gamma
+# energy distribution
+/gps/ene/mono 2.615 MeV
+
+
+/gps/pos/type Surface
+/gps/pos/shape Sphere
+/gps/pos/radius 7.7236 cm
+/gps/pos/centre 0 0 0 m
+
+# angular distribution
+/gps/ang/type iso
+#/run/printProgress 10000
+#
+/run/beamOn 2000000
