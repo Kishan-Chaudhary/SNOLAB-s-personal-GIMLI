@@ -1,0 +1,43 @@
+#include "PhysicsList.hh"
+
+PhysicsList::PhysicsList()
+{
+  //Some physics lists require a verbose level
+  //We don't require the associated verbose information
+  //So we set the verbose level to 0
+  G4int verb = 0;
+  SetVerboseLevel(verb);
+  //Some also require strings but we'll set that as we go
+
+  // Hadron Elastic scattering
+  RegisterPhysics( new HadronElasticPhysicsHP(verb));
+  
+  // Hadron Inelastic Physics
+  RegisterPhysics( new G4HadronPhysicsQGSP_BIC_HP());
+
+  // Ion Physics
+  RegisterPhysics( new G4IonPhysics());
+
+  // stopping Particles
+  RegisterPhysics( new G4StoppingPhysics());
+
+  // Gamma-Nuclear Physics
+  RegisterPhysics( new GammaNuclearPhysics("Gamma"));
+
+  // EM physics
+  RegisterPhysics(new ElectromagneticPhysics());
+
+  // Decay
+  RegisterPhysics(new G4DecayPhysics());
+
+  // Radioactive decay
+  RegisterPhysics(new G4RadioactiveDecayPhysics());
+
+  //Decay and Radioactive Decay packages can likely be removed,
+  //But I see no harm in keeping them
+}
+
+PhysicsList::~PhysicsList()
+{ }
+
+//Need to revise SetCuts

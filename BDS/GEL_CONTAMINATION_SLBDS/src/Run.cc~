@@ -1,0 +1,28 @@
+#include "Run.hh"
+
+MyRunAction::MyRunAction()
+{}
+
+MyRunAction::~MyRunAction()
+{}
+
+void MyRunAction::BeginOfRunAction(const G4Run*)
+{
+  G4AnalysisManager *man = G4AnalysisManager::Instance();
+
+  man->OpenFile("NeutronFluence.root");
+  man->CreateNtuple("energy","energy");
+  man->CreateNtupleDColumn("Greater_than_100keV");
+  man->CreateNtupleDColumn("Lower_than_100keV");
+
+  man->FinishNtuple(0);
+
+}
+
+void MyRunAction::EndOfRunAction(const G4Run*)
+{
+  G4AnalysisManager *man = G4AnalysisManager::Instance();
+  
+  man->Write();
+  man->CloseFile();
+}

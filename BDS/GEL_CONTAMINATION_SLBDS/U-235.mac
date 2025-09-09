@@ -1,0 +1,12 @@
+/gps/particle ion 
+/gps/ion 92 235 0 0
+/gps/energy 0. keV
+/gps/pos/type Volume
+/gps/pos/shape Sphere
+/gps/pos/radius 0.0119 m
+
+# 206.2 seconds interval between each beamOn
+#/gps/time 206.2 s
+
+# Beam amount of U-235 decays in 30 days
+/run/beamOn 12569
